@@ -1,8 +1,9 @@
-$(function () {
+$(function() {
 
 $('.number-chooser').submit(event => {
     event.preventDefault();
-    let givenNumber = $(event.currentTarget).find(#number-choice).val()
+    let givenNumber = $(event.currentTarget).find('input[number-choice]').val();
+    console.log(givenNumber);
 
     const result = [];
     for (let i = 1; i<=countTo; i++){
@@ -14,18 +15,22 @@ $('.number-chooser').submit(event => {
     // to the result array.
     for (let i = 1; i <= countTo; i++) {
       if (i % 5 === 0) {
-        result.push('buzz');
+        result.push($(
+          '<div class="fizz-buzz-item fizzbuzz"><span>buzz</span></div>'));
       } else if (i % 15 === 0) {
-        result.push('fizzbuzz');
+        result.push($(
+          '<div class="fizz-buzz-item fizzbuzz"><span>fizzbuzz</span></div>'));
       } else if (i % 3 === 0) {
-        result.push('fizz');
+        result.push($(
+          '<div class="fizz-buzz-item fizzbuzz"><span>buzz</span></div>'));
       } else {
-        result.push(i);
+        result.push($(
+          '<div class="fizz-buzz-item fizzbuzz"><span>'+ i +'</span></div>'));
       }
     }
-    return result;
-  
-
+    return $(".js-results").append(result);
+  }
+  });
 
 
 });
